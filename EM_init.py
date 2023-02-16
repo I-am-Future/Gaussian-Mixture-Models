@@ -1,7 +1,7 @@
 import numpy as np
 
 def kMeans(X, K, maxIters = 30):
-    centroids = X[np.random.choice(np.arange(len(X)), K), :]
+    centroids = X[np.random.choice(np.arange(len(X), replace=False), K), :]
     for i in range(maxIters):
         C = np.array([np.argmin([np.dot(x_i-y_k, x_i-y_k) for y_k in centroids]) for x_i in X])
         centroids = [X[C == k].mean(axis = 0) for k in range(K)]
